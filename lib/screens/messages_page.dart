@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_chat/widgets/send_message_field.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class MessagesPage extends StatefulWidget {
@@ -61,7 +62,21 @@ class _MessagesPageState extends State<MessagesPage> {
           )
         ],
       ),
-      body: Container(),
+      body: Container(
+        decoration: BoxDecoration(
+          color: Color.fromARGB(255, 241, 241, 241),
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.end,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.all(25.0),
+              child: SendMessageField(),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
