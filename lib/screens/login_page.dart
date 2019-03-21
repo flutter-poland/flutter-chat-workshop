@@ -1,0 +1,1 @@
+// final userAvatar = 'http://lorempixel.com/64/64/cats/${math.Random().nextInt(11)}/';

@@ -10,6 +10,8 @@ This project uses Firebase and Firestore to work.
 
 Please run `flutter upgrade` before. The project was developed with Flutter 1.3.8 initially.
 
+Start working at tag `step_0`.
+
 # Part 1
 
 At this point you have a simple one page app with Firebase and other small details preconfigured like file structure or required packages and plugins.
