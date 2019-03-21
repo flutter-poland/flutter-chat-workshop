@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter_chat/screens/chat_rooms_page.dart';
 
 class LoginPage extends StatefulWidget {
   _LoginPageState createState() => _LoginPageState();
@@ -61,7 +62,11 @@ class _LoginPageState extends State<LoginPage> {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(40),
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context).push<ChatRoomsPage>(MaterialPageRoute(
+                    builder: (context) => ChatRoomsPage(),
+                  ));
+                },
               ),
             ),
           ],
