@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_chat/screens/messages_page.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'dart:math' as math;
 
@@ -31,7 +32,7 @@ class _ChatRoomsPageState extends State<ChatRoomsPage> {
             itemBuilder: (context, index) {
               return new ChatRoomListTile(index: index);
             },
-            itemCount: 1,
+            itemCount: 3,
           ),
           onRefresh: () {
             return Future.delayed(Duration(milliseconds: 200));
@@ -74,7 +75,10 @@ class ChatRoomListTile extends StatelessWidget {
             ],
           ),
           trailing: Text('12:32'),
-          onTap: () {},
+          onTap: () {
+            Navigator.of(context)
+                .push<MessagesPage>(MaterialPageRoute(builder: (context) => MessagesPage()));
+          },
         ),
       ),
     );
