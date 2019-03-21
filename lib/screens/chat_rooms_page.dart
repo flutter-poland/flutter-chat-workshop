@@ -44,13 +44,38 @@ class _ChatRoomsPageState extends State<ChatRoomsPage> {
 class ChatRoomListTile extends StatelessWidget {
   const ChatRoomListTile({
     Key key,
-    int index,
+    this.index,
   }) : super(key: key);
+
+  final int index;
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      title: Text('text'),
+    final titleStyle = TextStyle(fontWeight: FontWeight.w600, fontSize: 16);
+    final subtitleStyle = TextStyle(fontWeight: FontWeight.w400, fontSize: 12);
+
+    return Container(
+      child: Container(
+        padding: EdgeInsets.symmetric(vertical: 18),
+        child: ListTile(
+          leading: CircleAvatar(),
+          title: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Text(
+                'Offtopic',
+                style: titleStyle,
+              ),
+              Text(
+                'Lorem ipsum dolor sit amet',
+                style: subtitleStyle,
+              ),
+            ],
+          ),
+          trailing: Text('12:32'),
+          onTap: () {},
+        ),
+      ),
     );
   }
 }
