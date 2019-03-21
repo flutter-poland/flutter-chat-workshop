@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_chat/widgets/message_cell.dart';
+import 'package:flutter_chat/widgets/my_message_cell.dart';
 import 'package:flutter_chat/widgets/send_message_field.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -70,6 +72,23 @@ class _MessagesPageState extends State<MessagesPage> {
           mainAxisAlignment: MainAxisAlignment.end,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
+            Expanded(
+              child: RefreshIndicator(
+                onRefresh: () {
+                  return Future.delayed(Duration(milliseconds: 400));
+                },
+                child: ListView.builder(
+                  itemCount: 10,
+                  itemBuilder: (context, index) {
+                    if (index % 2 == 0)
+                      return MyMessageCell();
+                    else
+                      return MessageCell();
+                  },
+                  reverse: true,
+                ),
+              ),
+            ),
             Padding(
               padding: const EdgeInsets.all(25.0),
               child: SendMessageField(),
