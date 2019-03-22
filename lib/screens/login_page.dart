@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 import 'dart:math' as math;
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter_chat/screens/chat_rooms_page.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginPage extends StatefulWidget {
   _LoginPageState createState() => _LoginPageState();
 }
 
 class _LoginPageState extends State<LoginPage> {
+  final usernameController = TextEditingController();
   final userAvatar =
       'http://lorempixel.com/200/200/cats/${math.Random().nextInt(10)}/';
 
@@ -27,6 +29,7 @@ class _LoginPageState extends State<LoginPage> {
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 8),
               child: TextField(
+                controller: usernameController,
                 decoration: InputDecoration(
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(40),
@@ -63,7 +66,11 @@ class _LoginPageState extends State<LoginPage> {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(40),
                 ),
-                onPressed: () {
+                onPressed: () async {
+                  final prefs = await SharedPreferences.getInstance();
+                  await prefs.setString('user', usernameController.text);
+                  await prefs.setString('avatar', userAvatar);
+
                   Navigator.of(context).push<ChatRoomsPage>(MaterialPageRoute(
                     builder: (context) => ChatRoomsPage(),
                   ));
