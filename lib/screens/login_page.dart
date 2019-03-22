@@ -8,7 +8,8 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  final userAvatar = 'http://lorempixel.com/200/200/cats/${math.Random().nextInt(10)}/';
+  final userAvatar =
+      'http://lorempixel.com/200/200/cats/${math.Random().nextInt(10)}/';
 
   @override
   Widget build(BuildContext context) {

@@ -20,8 +20,7 @@ class MyMessageCell extends StatelessWidget {
               borderRadius: BorderRadius.circular(40),
               color: Color.fromARGB(255, 0, 120, 255),
               boxShadow: [DesignHelpers.getShadow()]),
-          // child: Text(message.content, style: TextStyle(color: Colors.white)),
-          child: Text('Lorem ipsum', style: TextStyle(color: Colors.white)),
+          child: Text(message.content, style: TextStyle(color: Colors.white)),
         ),
       ],
     );

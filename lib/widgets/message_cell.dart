@@ -21,12 +21,14 @@ class MessageCell extends StatelessWidget {
               child: Column(
                 children: <Widget>[
                   CircleAvatar(
-                    // backgroundImage: message.avatar == null ? const AssetImage('assets/avatar_placeholder.png') : CachedNetworkImageProvider(message.avatar),
+                    backgroundImage: message.avatar == null
+                        ? const AssetImage('assets/avatar_placeholder.png')
+                        : CachedNetworkImageProvider(message.avatar),
                     radius: 20,
                   ),
                   Container(
                     margin: const EdgeInsets.fromLTRB(0, 4, 0, 0),
-                    // child: Text(message.from),
+                    child: Text(message.from),
                   ),
                 ],
               ),
@@ -38,8 +40,8 @@ class MessageCell extends StatelessWidget {
                   borderRadius: BorderRadius.circular(40),
                   color: Color.fromARGB(255, 255, 255, 255),
                   boxShadow: [DesignHelpers.getShadow()]),
-              child: Text('Lorem ipsum'),
-              // Text(message.content, style: TextStyle(color: Colors.black)),
+              child:
+                  Text(message.content, style: TextStyle(color: Colors.black)),
             ),
           ],
         ),

@@ -121,7 +121,7 @@ class _MessagesPageState extends State<MessagesPage> {
               ),
               Padding(
                 padding: const EdgeInsets.all(25.0),
-                child: SendMessageField(),
+                child: SendMessageField(model: _model),
               ),
             ],
           ),
