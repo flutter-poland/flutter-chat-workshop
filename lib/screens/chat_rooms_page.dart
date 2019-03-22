@@ -4,6 +4,7 @@ import 'package:flutter_chat/models/chat_rooms_model.dart';
 import 'package:flutter_chat/screens/messages_page.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'dart:math' as math;
+import 'package:intl/intl.dart';
 
 import 'package:scoped_model/scoped_model.dart';
 
@@ -93,13 +94,14 @@ class ChatRoomListTile extends StatelessWidget {
                   children: <Widget>[
                     Text(chatRoom.name, style: titleStyle),
                     Text(
-                      'Last chatroom message',
+                      chatRoom.lastMessage.content,
                       style: subtitleStyle,
                     ),
                   ],
                 ),
               ),
-              trailing: Text('12:00'),
+              trailing:
+                  Text(_dateFormat.format(chatRoom.lastMessage.timestamp)),
             ),
           ),
           Divider()
@@ -153,3 +155,5 @@ class ChatRoomAvatar extends StatelessWidget {
     );
   }
 }
+
+final DateFormat _dateFormat = DateFormat.Hm();
