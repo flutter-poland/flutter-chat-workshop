@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_chat/models/chat_rooms_model.dart';
 import 'package:flutter_chat/screens/messages_page.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'dart:math' as math;
@@ -9,6 +10,15 @@ class ChatRoomsPage extends StatefulWidget {
 }
 
 class _ChatRoomsPageState extends State<ChatRoomsPage> {
+  final ChatRoomsModel _model = ChatRoomsModel();
+
+  @override
+  void initState() {
+    super.initState();
+
+    _model.fetchChatrooms();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -76,8 +86,8 @@ class ChatRoomListTile extends StatelessWidget {
           ),
           trailing: Text('12:32'),
           onTap: () {
-            Navigator.of(context)
-                .push<MessagesPage>(MaterialPageRoute(builder: (context) => MessagesPage()));
+            Navigator.of(context).push<MessagesPage>(
+                MaterialPageRoute(builder: (context) => MessagesPage()));
           },
         ),
       ),
@@ -108,8 +118,8 @@ class ChatRoomAvatar extends StatelessWidget {
         children: <Widget>[
           CircleAvatar(
             radius: 25,
-            backgroundImage:
-                NetworkImage('http://lorempixel.com/200/200/cats/${math.Random().nextInt(10)}/'),
+            backgroundImage: NetworkImage(
+                'http://lorempixel.com/200/200/cats/${math.Random().nextInt(10)}/'),
           ),
           Positioned(
             right: 0,
