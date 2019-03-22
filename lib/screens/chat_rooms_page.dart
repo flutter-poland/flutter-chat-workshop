@@ -4,6 +4,8 @@ import 'package:flutter_chat/screens/messages_page.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'dart:math' as math;
 
+import 'package:scoped_model/scoped_model.dart';
+
 class ChatRoomsPage extends StatefulWidget {
   @override
   _ChatRoomsPageState createState() => _ChatRoomsPageState();
@@ -21,32 +23,39 @@ class _ChatRoomsPageState extends State<ChatRoomsPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        elevation: 0,
-        title: Center(child: Text('1 new message')),
-        leading: Icon(
-          Icons.search,
-          color: Colors.grey,
+    return ScopedModel(
+      model: _model,
+      child: Scaffold(
+        appBar: AppBar(
+          elevation: 0,
+          title: Center(child: Text('1 new message')),
+          leading: Icon(
+            Icons.search,
+            color: Colors.grey,
+          ),
+          actions: <Widget>[
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Icon(FontAwesomeIcons.edit, size: 20, color: Colors.grey),
+            ),
+          ],
         ),
-        actions: <Widget>[
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Icon(FontAwesomeIcons.edit, size: 20, color: Colors.grey),
-          ),
-        ],
-      ),
-      body: Container(
-        child: RefreshIndicator(
-          child: ListView.builder(
-            itemBuilder: (context, index) {
-              return new ChatRoomListTile(index: index);
+        body: Container(
+          child: ScopedModelDescendant<ChatRoomsModel>(
+            builder: (_, __, model) {
+              return RefreshIndicator(
+                child: ListView.builder(
+                  itemBuilder: (context, index) {
+                    return new ChatRoomListTile(index: index);
+                  },
+                  itemCount: 3,
+                ),
+                onRefresh: () {
+                  return Future.delayed(Duration(milliseconds: 200));
+                },
+              );
             },
-            itemCount: 3,
           ),
-          onRefresh: () {
-            return Future.delayed(Duration(milliseconds: 200));
-          },
         ),
       ),
     );
