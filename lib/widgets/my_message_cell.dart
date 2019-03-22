@@ -4,10 +4,9 @@ import 'package:flutter_chat/models/message.dart';
 import 'package:flutter_chat/utils/design_helpers.dart';
 
 class MyMessageCell extends StatelessWidget {
-  const MyMessageCell({Key key}) : super(key: key);
-  // const MyMessageCell({Key key, @required this.message}) : super(key: key);
+  const MyMessageCell({Key key, @required this.message}) : super(key: key);
 
-  // final Message message;
+  final Message message;
 
   @override
   Widget build(BuildContext context) {

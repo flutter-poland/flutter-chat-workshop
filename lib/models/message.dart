@@ -41,7 +41,7 @@ class Message {
   String from;
   String avatar;
   DateTime timestamp;
-  bool mine;
+  bool mine = false;
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
