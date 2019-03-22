@@ -52,9 +52,7 @@ class _ChatRoomsPageState extends State<ChatRoomsPage> {
                   },
                   itemCount: model.chatrooms.length,
                 ),
-                onRefresh: () {
-                  return Future.delayed(Duration(milliseconds: 200));
-                },
+                onRefresh: model.fetchChatrooms,
               );
             },
           ),
