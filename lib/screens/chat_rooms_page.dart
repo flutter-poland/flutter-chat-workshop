@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_chat/models/chat_room.dart';
 import 'package:flutter_chat/models/chat_rooms_model.dart';
 import 'package:flutter_chat/screens/messages_page.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -46,9 +47,10 @@ class _ChatRoomsPageState extends State<ChatRoomsPage> {
               return RefreshIndicator(
                 child: ListView.builder(
                   itemBuilder: (context, index) {
-                    return new ChatRoomListTile(index: index);
+                    return new ChatRoomListTile(
+                        chatRoom: model.chatrooms[index], index: index);
                   },
-                  itemCount: 3,
+                  itemCount: model.chatrooms.length,
                 ),
                 onRefresh: () {
                   return Future.delayed(Duration(milliseconds: 200));
@@ -63,11 +65,11 @@ class _ChatRoomsPageState extends State<ChatRoomsPage> {
 }
 
 class ChatRoomListTile extends StatelessWidget {
-  const ChatRoomListTile({
-    Key key,
-    this.index,
-  }) : super(key: key);
+  const ChatRoomListTile(
+      {Key key, @required this.chatRoom, @required this.index})
+      : super(key: key);
 
+  final ChatRoom chatRoom;
   final int index;
 
   @override
@@ -76,29 +78,34 @@ class ChatRoomListTile extends StatelessWidget {
     final subtitleStyle = TextStyle(fontWeight: FontWeight.w400, fontSize: 12);
 
     return Container(
-      child: Container(
-        padding: EdgeInsets.symmetric(vertical: 18),
-        child: ListTile(
-          leading: ChatRoomAvatar(index),
-          title: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Text(
-                'Offtopic',
-                style: titleStyle,
+      child: Column(
+        children: <Widget>[
+          Container(
+            margin: const EdgeInsets.symmetric(vertical: 18),
+            child: ListTile(
+              onTap: () {
+                Navigator.of(context).push<MessagesPage>(
+                    MaterialPageRoute(builder: (context) => MessagesPage()));
+              },
+              leading: ChatRoomAvatar(index),
+              title: Opacity(
+                opacity: index == 0 ? 1.0 : 0.6,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Text(chatRoom.name, style: titleStyle),
+                    Text(
+                      'Last chatroom message',
+                      style: subtitleStyle,
+                    ),
+                  ],
+                ),
               ),
-              Text(
-                'Lorem ipsum dolor sit amet',
-                style: subtitleStyle,
-              ),
-            ],
+              trailing: Text('12:00'),
+            ),
           ),
-          trailing: Text('12:32'),
-          onTap: () {
-            Navigator.of(context).push<MessagesPage>(
-                MaterialPageRoute(builder: (context) => MessagesPage()));
-          },
-        ),
+          Divider()
+        ],
       ),
     );
   }
