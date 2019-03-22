@@ -82,8 +82,8 @@ class ChatRoomListTile extends StatelessWidget {
             margin: const EdgeInsets.symmetric(vertical: 18),
             child: ListTile(
               onTap: () {
-                Navigator.of(context).push<MessagesPage>(
-                    MaterialPageRoute(builder: (context) => MessagesPage()));
+                Navigator.of(context).push<MessagesPage>(MaterialPageRoute(
+                    builder: (context) => MessagesPage(room: chatRoom)));
               },
               leading: ChatRoomAvatar(index),
               title: Opacity(

@@ -1,15 +1,37 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_chat/models/chat_room.dart';
+import 'package:flutter_chat/models/messages_model.dart';
 import 'package:flutter_chat/widgets/message_cell.dart';
 import 'package:flutter_chat/widgets/my_message_cell.dart';
 import 'package:flutter_chat/widgets/send_message_field.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class MessagesPage extends StatefulWidget {
+  MessagesPage({Key key, @required this.room}) : super(key: key);
+
+  final ChatRoom room;
+
   @override
   _MessagesPageState createState() => _MessagesPageState();
 }
 
 class _MessagesPageState extends State<MessagesPage> {
+  MessagesModel _model;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _model = MessagesModel(roomId: widget.room.id);
+    _model.fetchMessages();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _model.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     final subtitleTextStyle = TextStyle(fontSize: 9);
