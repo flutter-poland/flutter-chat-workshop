@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter_chat/utils/convert_timestamp.dart';
 import 'package:uuid/uuid.dart';
 
 Uuid uuid = Uuid();
@@ -14,7 +15,7 @@ class Message {
       ..content = doc.data['content']
       ..from = doc.data['from']
       ..avatar = doc.data['avatar']
-      ..timestamp = (doc.data['timestamp'] as Timestamp).toDate();
+      ..timestamp = convertTimestamp(doc.data['timestamp']);
   }
 
   factory Message.fromMap(Map<String, dynamic> map) {
@@ -22,7 +23,7 @@ class Message {
       ..id = map['id']
       ..content = map['content']
       ..from = map['from']
-      ..timestamp = (map['timestamp'] as Timestamp).toDate();
+      ..timestamp = convertTimestamp(map['timestamp']);
   }
 
   factory Message.fromData(String content, String from, String avatar) {
