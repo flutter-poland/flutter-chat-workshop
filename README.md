@@ -39,14 +39,19 @@ We're going to use Scoped Model to update views after fetching from or uploading
 
 Bugfixes in later commits
 
-We found that on iOS there's a problem with parsing timestamps, so in order to solve this we had to cast and then convert timestamp to date i.e.
+We found that on iOS there's a problem with parsing timestamps, so in order to solve this we had to convert timestamp to date i.e.
 
-```dart
+```diff
     return Message._new()
       ..id = map['id']
       ..content = map['content']
       ..from = map['from']
 -      ..timestamp = map['timestamp']
-+      ..timestamp = (map['timestamp'] as Timestamp).toDate();
++      ..timestamp = convertTimestamp(map['timestamp']);
 ```
 
+# About
+
+Thank you all for helping Flutter Warsaw team to organize our first workshop ever.
+
+See more on [Flutter Warsaw Meetup](https://www.meetup.com/Flutter-Warsaw/).
