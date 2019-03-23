@@ -13,14 +13,16 @@ class MyMessageCell extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.end,
       children: <Widget>[
-        Container(
-          padding: const EdgeInsets.all(16),
-          margin: const EdgeInsets.fromLTRB(16, 4, 16, 4),
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(40),
-              color: Color.fromARGB(255, 0, 120, 255),
-              boxShadow: [DesignHelpers.getShadow()]),
-          child: Text(message.content, style: TextStyle(color: Colors.white)),
+        Flexible(
+          child: Container(
+            padding: const EdgeInsets.all(16),
+            margin: const EdgeInsets.fromLTRB(16, 4, 16, 4),
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(40),
+                color: const Color.fromARGB(255, 0, 120, 255),
+                boxShadow: [DesignHelpers.getShadow()]),
+            child: Text(message.content, style: TextStyle(color: Colors.white)),
+          ),
         ),
       ],
     );

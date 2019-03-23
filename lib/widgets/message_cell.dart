@@ -33,15 +33,16 @@ class MessageCell extends StatelessWidget {
                 ],
               ),
             ),
-            Container(
-              padding: const EdgeInsets.all(16),
-              margin: const EdgeInsets.fromLTRB(16, 8, 16, 8),
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(40),
-                  color: Color.fromARGB(255, 255, 255, 255),
-                  boxShadow: [DesignHelpers.getShadow()]),
-              child:
-                  Text(message.content, style: TextStyle(color: Colors.black)),
+            Flexible(
+              child: Container(
+                padding: const EdgeInsets.all(16),
+                margin: const EdgeInsets.fromLTRB(16, 8, 16, 8),
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(40),
+                    color: const Color.fromARGB(255, 255, 255, 255),
+                    boxShadow: [DesignHelpers.getShadow()]),
+                child: Text(message.content, style: TextStyle(color: Colors.black)),
+              ),
             ),
           ],
         ),
