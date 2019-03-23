@@ -14,7 +14,7 @@ class Message {
       ..content = doc.data['content']
       ..from = doc.data['from']
       ..avatar = doc.data['avatar']
-      ..timestamp = doc.data['timestamp'];
+      ..timestamp = (doc.data['timestamp'] as Timestamp).toDate();
   }
 
   factory Message.fromMap(Map<String, dynamic> map) {
@@ -22,7 +22,7 @@ class Message {
       ..id = map['id']
       ..content = map['content']
       ..from = map['from']
-      ..timestamp = map['timestamp'];
+      ..timestamp = (map['timestamp'] as Timestamp).toDate();
   }
 
   factory Message.fromData(String content, String from, String avatar) {
