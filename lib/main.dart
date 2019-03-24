@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_chat/screens/login_page.dart';
 
 void main() => runApp(MyApp());
 
@@ -11,11 +12,7 @@ class MyApp extends StatelessWidget {
         primaryColor: Colors.white,
         secondaryHeaderColor: Colors.grey,
       ),
-      home: Scaffold(
-        body: Center(
-          child: Text('Hello Flutter Warsaw!'),
-        ),
-      ),
+      home: LoginPage()
     );
   }
 }

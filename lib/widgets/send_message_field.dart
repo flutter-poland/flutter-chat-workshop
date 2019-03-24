@@ -1,27 +1,24 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_chat/utils/design_helpers.dart';
-// import 'package:flutter_chat/models/messages_model.dart';
-// import 'package:flutter_chat/utils/design_helpers.dart';
+import 'package:flutter_chat/models/messages_model.dart';
+import 'package:flutter_chat/utils/design_helpers.dart';
 import 'package:flutter_chat/widgets/send_message_icon.dart';
 
 class SendMessageField extends StatefulWidget {
-  const SendMessageField({Key key}) : super(key: key);
+  const SendMessageField({Key key, @required this.model}) : super(key: key);
 
-  // const SendMessageField({Key key, @required this.model}) : super(key: key);
-  // final MessagesModel model;
+  final MessagesModel model;
 
   @override
-  State<StatefulWidget> createState() => _SendMessageFieldState();
-  // State<StatefulWidget> createState() => _SendMessageFieldState(model);
+  State<StatefulWidget> createState() => _SendMessageFieldState(model);
 }
 
 class _SendMessageFieldState extends State<SendMessageField> {
-  _SendMessageFieldState() : textController = TextEditingController();
-  // _SendMessageFieldState(this.model) : textController = TextEditingController();
+  _SendMessageFieldState(this.model) : textController = TextEditingController();
 
   final TextEditingController textController;
-  // final MessagesModel model;
+  final MessagesModel model;
 
   @override
   Widget build(BuildContext context) {
@@ -57,7 +54,7 @@ class _SendMessageFieldState extends State<SendMessageField> {
       return;
     }
 
-    // model.sendMessage(textController.text);
+    model.sendMessage(textController.text);
     textController.clear();
   }
 }
