@@ -6,13 +6,28 @@ This is a simple chat app written in Flutter with Firestore backend. It was insp
 
 It was created during Flutter Warsaw workshop #1 on March 23, 2019.
 
-It contains already prepared google-services.json and GoogleService-Info.plist files, but they will stop working soon in the future, so you may need to recreate them in your own Firebase console.
+It contains already prepared google-services.json and GoogleService-Info.plist files, but they will stop working soon in the future, so you may need to recreate them in your own Firebase console by following [this guide](https://firebase.google.com/docs/flutter/setup). 
 
 ## Getting Started
 
 This project uses Firebase and Firestore to work.
 
 Please run `flutter upgrade` before. The project was developed with Flutter 1.3.8 initially.
+
+## Prepare Firestore database
+
+Before starting you should have prepared your Firestore database as follows:
+
+1. Add collection `rooms`
+2. In `rooms` add new document with auto id and following fields:
+  - `name` : string
+  - `lastMessage` : map
+    - `avatar` : string
+    - `from` : string
+    - `content` : string
+    - `id` : string
+    - `timestamp` : timestamp
+3. Initially set all the security rules as public. Remember to [turn them off](https://firebase.google.com/docs/firestore/security/get-started) later to protect your account quota.
 
 # Part 1
 
